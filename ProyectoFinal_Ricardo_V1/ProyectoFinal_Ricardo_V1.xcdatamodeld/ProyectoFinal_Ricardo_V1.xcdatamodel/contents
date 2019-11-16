@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Donaccion" representedClassName="Donaccion" syncable="YES">
+        <attribute name="cantidad" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="categoria" attributeType="String" syncable="YES"/>
+        <attribute name="correo_donatario" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descripcion" attributeType="String" syncable="YES"/>
+        <attribute name="foto" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="donatario" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Donatario" inverseName="donaccion" inverseEntity="Donatario" syncable="YES"/>
+    </entity>
+    <entity name="Donatario" representedClassName=".Donatario" syncable="YES">
+        <attribute name="calle" attributeType="String" syncable="YES"/>
+        <attribute name="complemento" attributeType="String" syncable="YES"/>
+        <attribute name="contrasena" attributeType="String" syncable="YES"/>
+        <attribute name="correo" attributeType="String" syncable="YES"/>
+        <attribute name="distrito" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" attributeType="String" syncable="YES"/>
+        <attribute name="zip_code" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="donaccion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Donaccion" inverseName="donatario" inverseEntity="Donaccion" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Donatario" positionX="374.19921875" positionY="17.2578125" width="128" height="163"/>
+        <element name="Donaccion" positionX="-111.4296875" positionY="45" width="185.4296875" height="133"/>
+    </elements>
+</model>
