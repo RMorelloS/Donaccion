@@ -1,19 +1,19 @@
 //
-//  DonationTableViewCell.swift
+//  UserDonationTableViewCell.swift
 //  ProyectoFinal_Ricardo_V1
 //
-//  Created by Morello Santos Ricardo on 11/15/19.
+//  Created by Morello Santos Ricardo on 11/21/19.
 //  Copyright © 2019 Morello Santos Ricardo. All rights reserved.
 //
 
 import UIKit
 
-class DonationTableViewCell: UITableViewCell {
-    @IBOutlet weak var labelPersonName : UILabel!
-    @IBOutlet weak var labelDescription : UILabel!
-    @IBOutlet weak var labelEmail : UILabel!
-    @IBOutlet weak var imageDonation : UIImageView!
-    
+class UserDonationTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var userDonationImage: UIImageView!
+    @IBOutlet weak var labelCategory: UILabel!
+    @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet weak var labelAmount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

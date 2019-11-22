@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DonationsViewController: UIViewController {
+class DonationsCategoryViewController: UIViewController {
     @IBOutlet weak var btnClothes : UIButton!
     @IBOutlet weak var btnFurniture : UIButton!
     @IBOutlet weak var btnToys : UIButton!
@@ -45,22 +45,39 @@ class DonationsViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let donationsTableViewController = segue.destination as! DonationsTableViewController
         switch segue.identifier{
         case "segueClothes":
+            donationsTableViewController.colorTopView = btnClothes.backgroundColor!
+            donationsTableViewController.topLabelText = "Clothes"
             break
         case "segueFurniture":
+            donationsTableViewController.colorTopView = btnFurniture.backgroundColor!
+            donationsTableViewController.topLabelText = "Furniture"
             break
         case "segueToys":
+            donationsTableViewController.colorTopView = btnToys.backgroundColor!
+            donationsTableViewController.topLabelText = "Toys"
             break
         case "segueAppliances":
+            donationsTableViewController.colorTopView = btnAppliances.backgroundColor!
+            donationsTableViewController.topLabelText = "Appliances"
             break
         case "segueElectronics":
+            donationsTableViewController.colorTopView = btnElectronics.backgroundColor!
+            donationsTableViewController.topLabelText = "Electronics"
             break
         case "segueBooks":
+            donationsTableViewController.colorTopView = btnBooks.backgroundColor!
+            donationsTableViewController.topLabelText = "Books"
             break
         case "segueComputers":
+            donationsTableViewController.colorTopView = btnComputers.backgroundColor!
+            donationsTableViewController.topLabelText = "Computers"
             break
         case "seguePeripherals":
+            donationsTableViewController.colorTopView = btnPeripherals.backgroundColor!
+            donationsTableViewController.topLabelText = "Peripherals"
             break
         default:
             break

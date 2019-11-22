@@ -1,5 +1,5 @@
 //
-//  Donaccion+CoreDataClass.swift
+//  Donatario+CoreDataClass.swift
 //  ProyectoFinal_Ricardo_V1
 //
 //  Created by Morello Santos Ricardo on 11/15/19.
@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-@objc(Donaccion)
-public class Donaccion: NSManagedObject {
-    
+
+public class Donatario: NSManagedObject {
 }

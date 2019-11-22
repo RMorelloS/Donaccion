@@ -8,8 +8,17 @@
 
 import UIKit
 
-class DonateViewController: UIViewController {
-
+class DonateViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return itensList.count
+    }
+    
+    var donationsList : DonationsList!
+    var donees = [Donatario]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,20 +27,58 @@ class DonateViewController: UIViewController {
         addGradient()
         addIconsToButtons()
         self.view.bringSubviewToFront(btnCamera)
+        self.view.bringSubviewToFront(outletBtnAdd)
+        donationsList = appDelegate.donationsList
+        
+        outletDescription.delegate = self
+        outletDescription.underlined(textString: "Description")
+        outletUIPicker.delegate = self
+        outletUIPicker.dataSource = self
         
     }
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    @IBOutlet weak var outletDescription : UITextField!
+    @IBOutlet weak var outletAmount : UISlider!
+    @IBOutlet weak var outletBtnAdd: UIButton!
+    @IBOutlet weak var outletBtnCancel: UIButton!
+    @IBOutlet weak var outletDonationImage : UIImageView!
+    @IBOutlet weak var outletUIPicker : UIPickerView!
+    var donationCategory : String = "Clothes"
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    var itensList = ["Clothes", "Furniture", "Toys", "Appliances", "Electronics", "Books", "Computers", "Peripherals"]
     
-    @IBOutlet weak var btnAdd: UIButton!
-    @IBOutlet weak var btnCancel: UIButton!
-   
+    @IBAction func btnAdd(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let donationsTableViewController = storyboard.instantiateViewController(withIdentifier: "donationsTableViewController") as! DonationsTableViewController
+        donationsTableViewController.tableView.reloadData()
+        donationsTableViewController.topLabelText = donationCategory
+        let donaccion = Donaccion(context: appDelegate.persistentContainer.viewContext)
+        print(donationCategory)
+        donaccion.categoria = donationCategory
+        donaccion.descripcion = outletDescription.text!
+        donaccion.correo_donatario = appDelegate.userEmail
+        donaccion.cantidad = Int16(outletAmount.value)
+        donationsList.allDonations.append(donaccion)
+        donationsTableViewController.tableView.reloadData()
+        appDelegate.saveContext()
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return itensList[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        donationCategory = itensList[row]
+    }
     
     @IBOutlet weak var btnCamera: UIButton!
     
     func addIconsToButtons(){
         let addImage = UIImage(.add);
-        btnAdd.setImage(addImage, for: .normal)
+        outletBtnAdd.setImage(addImage, for: .normal)
         let cancelImage = UIImage(.stop);
-        btnCancel.setImage(cancelImage, for: .normal)
+        outletBtnCancel.setImage(cancelImage, for: .normal)
         let cameraImage = UIImage(.camera)
         btnCamera.setImage(cameraImage, for: .normal)
         
@@ -51,6 +98,9 @@ class DonateViewController: UIViewController {
         self.view.addSubview(gradientView)
         self.view.sendSubviewToBack(gradientView)
     }
+    
+    
+    
     /*
     // MARK: - Navigation
 

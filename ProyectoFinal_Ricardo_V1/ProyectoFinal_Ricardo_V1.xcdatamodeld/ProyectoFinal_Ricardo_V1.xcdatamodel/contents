@@ -5,11 +5,13 @@
         <attribute name="categoria" attributeType="String" syncable="YES"/>
         <attribute name="correo_donatario" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descripcion" attributeType="String" syncable="YES"/>
+        <attribute name="donacionId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="foto" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="donatario" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Donatario" inverseName="donaccion" inverseEntity="Donatario" syncable="YES"/>
     </entity>
     <entity name="Donatario" representedClassName=".Donatario" syncable="YES">
         <attribute name="calle" attributeType="String" syncable="YES"/>
+        <attribute name="ciudad" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="complemento" attributeType="String" syncable="YES"/>
         <attribute name="contrasena" attributeType="String" syncable="YES"/>
         <attribute name="correo" attributeType="String" syncable="YES"/>
@@ -19,7 +21,7 @@
         <relationship name="donaccion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Donaccion" inverseName="donatario" inverseEntity="Donaccion" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Donatario" positionX="374.19921875" positionY="17.2578125" width="128" height="163"/>
-        <element name="Donaccion" positionX="-111.4296875" positionY="45" width="185.4296875" height="133"/>
+        <element name="Donaccion" positionX="-111.4296875" positionY="45" width="185.4296875" height="150"/>
+        <element name="Donatario" positionX="374.19921875" positionY="17.2578125" width="128" height="180"/>
     </elements>
 </model>
